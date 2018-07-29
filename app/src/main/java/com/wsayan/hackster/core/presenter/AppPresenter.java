@@ -1,14 +1,14 @@
-package com.potato.wahidsadique.androiddumbstructure.presenter;
+package com.wsayan.hackster.core.presenter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.potato.wahidsadique.androiddumbstructure.config.ApiClient;
-import com.potato.wahidsadique.androiddumbstructure.config.db.DbConfig;
-import com.potato.wahidsadique.androiddumbstructure.config.db.DbCrud;
-import com.potato.wahidsadique.androiddumbstructure.utility.DbUtils;
-import com.potato.wahidsadique.androiddumbstructure.utility.SharedPrefUtils;
-import com.potato.wahidsadique.androiddumbstructure.utility.WebUtils;
+import com.wsayan.hackster.core.config.ApiClient;
+import com.wsayan.hackster.core.config.db.DbConfig;
+import com.wsayan.hackster.core.config.db.DbCrud;
+import com.wsayan.hackster.core.utility.DbUtils;
+import com.wsayan.hackster.core.utility.SharedPrefUtils;
+import com.wsayan.hackster.core.utility.WebUtils;
 
 /**
  * Created by wahid.sadique on 9/12/2017.

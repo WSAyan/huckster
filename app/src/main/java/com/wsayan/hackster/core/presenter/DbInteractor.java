@@ -1,10 +1,10 @@
-package com.potato.wahidsadique.androiddumbstructure.presenter;
+package com.wsayan.hackster.core.presenter;
 
-import com.potato.wahidsadique.androiddumbstructure.config.db.DbConfig;
-import com.potato.wahidsadique.androiddumbstructure.config.db.DbCrud;
-import com.potato.wahidsadique.androiddumbstructure.config.db.DbTables;
-import com.potato.wahidsadique.androiddumbstructure.model.binder.DataRow;
-import com.potato.wahidsadique.androiddumbstructure.model.binder.DataTable;
+import com.wsayan.hackster.core.config.db.DbConfig;
+import com.wsayan.hackster.core.config.db.DbCrud;
+import com.wsayan.hackster.core.config.db.DbTables;
+import com.wsayan.hackster.core.model.binder.DataRow;
+import com.wsayan.hackster.core.model.binder.DataTable;
 
 /**
  * Created by wahid.sadique on 9/11/2017.

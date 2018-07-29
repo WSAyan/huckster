@@ -1,6 +1,5 @@
-package com.potato.wahidsadique.androiddumbstructure.ui.activity;
+package com.wsayan.hackster.core.ui.activity;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,8 +9,8 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.view.View;
 
-import com.potato.wahidsadique.androiddumbstructure.R;
-import com.potato.wahidsadique.androiddumbstructure.utility.GlobalConstants;
+import com.wsayan.hackster.core.R;
+import com.wsayan.hackster.core.utility.GlobalConstants;
 
 public class NewsActivity extends AppCompatActivity {
     private WebView newsWebView;
@@ -22,6 +21,7 @@ public class NewsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initializeWidgets();
         initializeData();
         eventListeners();
@@ -49,8 +49,6 @@ public class NewsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home: {
-                Intent intent = new Intent(this, HomeTabActivity.class);
-                startActivity(intent);
                 finish();
                 return true;
             }

@@ -1,4 +1,4 @@
-package com.potato.wahidsadique.androiddumbstructure.ui.fragment;
+package com.wsayan.hackster.core.ui.fragment;
 
 
 import android.app.ProgressDialog;
@@ -13,15 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.potato.wahidsadique.androiddumbstructure.R;
-import com.potato.wahidsadique.androiddumbstructure.model.pojo.Source;
-import com.potato.wahidsadique.androiddumbstructure.model.pojo.Sources;
-import com.potato.wahidsadique.androiddumbstructure.presenter.AppPresenter;
-import com.potato.wahidsadique.androiddumbstructure.presenter.IApiInteractor;
-import com.potato.wahidsadique.androiddumbstructure.presenter.IDbInteractor;
-import com.potato.wahidsadique.androiddumbstructure.ui.adapter.NewsSourceListAdapter;
-import com.potato.wahidsadique.androiddumbstructure.utility.HttpStatusCodes;
-import com.potato.wahidsadique.androiddumbstructure.utility.SharedPrefUtils;
+import com.wsayan.hackster.core.R;
+import com.wsayan.hackster.core.model.pojo.Source;
+import com.wsayan.hackster.core.model.pojo.Sources;
+import com.wsayan.hackster.core.presenter.AppPresenter;
+import com.wsayan.hackster.core.presenter.IApiInteractor;
+import com.wsayan.hackster.core.presenter.IDbInteractor;
+import com.wsayan.hackster.core.ui.adapter.NewsSourceListAdapter;
+import com.wsayan.hackster.core.utility.HttpStatusCodes;
+import com.wsayan.hackster.core.utility.SharedPrefUtils;
 
 import java.util.List;
 

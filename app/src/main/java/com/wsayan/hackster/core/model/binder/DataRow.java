@@ -1,4 +1,4 @@
-package com.potato.wahidsadique.androiddumbstructure.model.binder;
+package com.wsayan.hackster.core.model.binder;
 
 import android.content.ContentValues;
 

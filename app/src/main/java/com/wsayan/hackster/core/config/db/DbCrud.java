@@ -1,11 +1,11 @@
-package com.potato.wahidsadique.androiddumbstructure.config.db;
+package com.wsayan.hackster.core.config.db;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.potato.wahidsadique.androiddumbstructure.model.binder.DataRow;
-import com.potato.wahidsadique.androiddumbstructure.model.binder.DataTable;
+import com.wsayan.hackster.core.model.binder.DataRow;
+import com.wsayan.hackster.core.model.binder.DataTable;
 
 /**
  * Created by wahid.sadique on 8/30/2017.

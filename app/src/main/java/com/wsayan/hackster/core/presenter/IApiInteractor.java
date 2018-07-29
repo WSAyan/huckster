@@ -1,6 +1,6 @@
-package com.potato.wahidsadique.androiddumbstructure.presenter;
+package com.wsayan.hackster.core.presenter;
 
-import com.potato.wahidsadique.androiddumbstructure.model.pojo.Sources;
+import com.wsayan.hackster.core.model.pojo.Sources;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

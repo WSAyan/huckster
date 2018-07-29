@@ -1,4 +1,4 @@
-package com.potato.wahidsadique.androiddumbstructure.config.db;
+package com.wsayan.hackster.core.config.db;
 
 /**
  * Created by User on 11/7/2017.

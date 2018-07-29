@@ -1,4 +1,4 @@
-package com.potato.wahidsadique.androiddumbstructure.ui.adapter;
+package com.wsayan.hackster.core.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,11 +12,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.potato.wahidsadique.androiddumbstructure.R;
-import com.potato.wahidsadique.androiddumbstructure.model.pojo.Source;
-import com.potato.wahidsadique.androiddumbstructure.presenter.IDbInteractor;
-import com.potato.wahidsadique.androiddumbstructure.ui.activity.NewsActivity;
-import com.potato.wahidsadique.androiddumbstructure.utility.GlobalConstants;
+import com.wsayan.hackster.core.R;
+import com.wsayan.hackster.core.model.pojo.Source;
+import com.wsayan.hackster.core.presenter.IDbInteractor;
+import com.wsayan.hackster.core.ui.activity.NewsActivity;
+import com.wsayan.hackster.core.utility.GlobalConstants;
 
 import java.util.List;
 

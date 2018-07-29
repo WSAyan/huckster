@@ -1,4 +1,4 @@
-package com.potato.wahidsadique.androiddumbstructure;
+package com.wsayan.hackster.core;
 
 import org.junit.Test;
 

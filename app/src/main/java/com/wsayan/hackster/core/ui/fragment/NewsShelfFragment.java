@@ -1,4 +1,4 @@
-package com.potato.wahidsadique.androiddumbstructure.ui.fragment;
+package com.wsayan.hackster.core.ui.fragment;
 
 
 import android.content.Context;
@@ -11,10 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.potato.wahidsadique.androiddumbstructure.R;
-import com.potato.wahidsadique.androiddumbstructure.presenter.AppPresenter;
-import com.potato.wahidsadique.androiddumbstructure.presenter.IDbInteractor;
-import com.potato.wahidsadique.androiddumbstructure.ui.adapter.NewsShelfListAdapter;
+import com.wsayan.hackster.core.R;
+import com.wsayan.hackster.core.presenter.AppPresenter;
+import com.wsayan.hackster.core.presenter.IDbInteractor;
+import com.wsayan.hackster.core.ui.adapter.NewsShelfListAdapter;
 
 public class NewsShelfFragment extends Fragment {
     private RecyclerView newsShelfRecyclerView;

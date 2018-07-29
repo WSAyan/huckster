@@ -1,4 +1,4 @@
-package com.potato.wahidsadique.androiddumbstructure.ui.activity;
+package com.wsayan.hackster.core.ui.activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,11 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.potato.wahidsadique.androiddumbstructure.R;
-import com.potato.wahidsadique.androiddumbstructure.presenter.AppPresenter;
-import com.potato.wahidsadique.androiddumbstructure.ui.adapter.HomeTabAdapter;
-import com.potato.wahidsadique.androiddumbstructure.utility.GlobalConstants;
-import com.potato.wahidsadique.androiddumbstructure.utility.SharedPrefUtils;
+import com.wsayan.hackster.core.R;
+import com.wsayan.hackster.core.presenter.AppPresenter;
+import com.wsayan.hackster.core.ui.adapter.HomeTabAdapter;
+import com.wsayan.hackster.core.utility.GlobalConstants;
+import com.wsayan.hackster.core.utility.SharedPrefUtils;
 
 public class HomeTabActivity extends AppCompatActivity {
     private HomeTabAdapter mSectionsPagerAdapter;

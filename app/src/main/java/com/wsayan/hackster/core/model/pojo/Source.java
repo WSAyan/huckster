@@ -1,5 +1,5 @@
 
-package com.potato.wahidsadique.androiddumbstructure.model.pojo;
+package com.wsayan.hackster.core.model.pojo;
 
 import com.google.gson.annotations.SerializedName;
 

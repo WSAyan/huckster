@@ -1,4 +1,4 @@
-package com.potato.wahidsadique.androiddumbstructure.config;
+package com.wsayan.hackster.core.config;
 
 import java.util.concurrent.TimeUnit;
 

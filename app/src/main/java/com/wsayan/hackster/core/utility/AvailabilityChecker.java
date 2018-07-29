@@ -1,4 +1,4 @@
-package com.potato.wahidsadique.androiddumbstructure.utility;
+package com.wsayan.hackster.core.utility;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;

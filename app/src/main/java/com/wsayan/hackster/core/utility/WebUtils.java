@@ -1,4 +1,4 @@
-package com.potato.wahidsadique.androiddumbstructure.utility;
+package com.wsayan.hackster.core.utility;
 
 public final class WebUtils {
     public static final String BASE_URL = "https://newsapi.org/";

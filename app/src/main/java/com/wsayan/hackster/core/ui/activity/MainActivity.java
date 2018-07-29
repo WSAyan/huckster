@@ -1,10 +1,10 @@
-package com.potato.wahidsadique.androiddumbstructure.ui.activity;
+package com.wsayan.hackster.core.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.potato.wahidsadique.androiddumbstructure.R;
+import com.wsayan.hackster.core.R;
 
 public class MainActivity extends AppCompatActivity {
 

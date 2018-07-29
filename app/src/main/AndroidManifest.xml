@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.potato.wahidsadique.androiddumbstructure">
+    package="com.wsayan.hackster.core">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -26,7 +26,14 @@
             android:name=".ui.activity.HomeTabActivity"
             android:label="@string/title_activity_home_tabbed"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.activity.NewsActivity"></activity>
+        <activity
+            android:name=".ui.activity.NewsActivity"
+            android:parentActivityName=".ui.activity.HomeTabActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activity.HomeTabActivity" />
+
+        </activity>
     </application>
 
 </manifest>

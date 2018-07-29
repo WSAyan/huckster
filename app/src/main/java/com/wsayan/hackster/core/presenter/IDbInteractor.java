@@ -1,6 +1,6 @@
-package com.potato.wahidsadique.androiddumbstructure.presenter;
+package com.wsayan.hackster.core.presenter;
 
-import com.potato.wahidsadique.androiddumbstructure.model.binder.DataTable;
+import com.wsayan.hackster.core.model.binder.DataTable;
 
 /**
  * Created by wahid.sadique on 8/30/2017.

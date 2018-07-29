@@ -1,4 +1,4 @@
-package com.potato.wahidsadique.androiddumbstructure.utility;
+package com.wsayan.hackster.core.utility;
 
 /**
  * Created by wahid.sadique on 1/28/2018.

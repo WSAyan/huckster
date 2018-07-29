@@ -1,4 +1,4 @@
-package com.potato.wahidsadique.androiddumbstructure.utility;
+package com.wsayan.hackster.core.utility;
 
 public final class SharedPrefUtils {
     public static final String SPF_NAME = "spf_name";

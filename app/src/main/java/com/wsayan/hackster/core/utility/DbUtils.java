@@ -1,4 +1,4 @@
-package com.potato.wahidsadique.androiddumbstructure.utility;
+package com.wsayan.hackster.core.utility;
 
 public final class DbUtils {
     public static final String DB_NAME = "db_name";

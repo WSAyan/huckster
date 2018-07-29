@@ -1,4 +1,4 @@
-package com.potato.wahidsadique.androiddumbstructure.config.db;
+package com.wsayan.hackster.core.config.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
