@@ -7,96 +7,74 @@ import java.util.List;
 
 
 public class Source {
-
     @SerializedName("category")
-    private String mCategory;
+    private String category;
     @SerializedName("country")
-    private String mCountry;
+    private String country;
     @SerializedName("description")
-    private String mDescription;
+    private String description;
     @SerializedName("id")
-    private String mId;
+    private String id;
     @SerializedName("language")
-    private String mLanguage;
+    private String language;
     @SerializedName("name")
-    private String mName;
-    @SerializedName("sortBysAvailable")
-    private List<String> mSortBysAvailable;
+    private String name;
     @SerializedName("url")
-    private String mUrl;
-    @SerializedName("urlsToLogos")
-    private UrlsToLogos mUrlsToLogos;
+    private String url;
 
     public String getCategory() {
-        return mCategory;
+        return category;
     }
 
     public void setCategory(String category) {
-        mCategory = category;
+        this.category = category;
     }
 
     public String getCountry() {
-        return mCountry;
+        return country;
     }
 
     public void setCountry(String country) {
-        mCountry = country;
+        this.country = country;
     }
 
     public String getDescription() {
-        return mDescription;
+        return description;
     }
 
     public void setDescription(String description) {
-        mDescription = description;
+        this.description = description;
     }
 
     public String getId() {
-        return mId;
+        return id;
     }
 
     public void setId(String id) {
-        mId = id;
+        this.id = id;
     }
 
     public String getLanguage() {
-        return mLanguage;
+        return language;
     }
 
     public void setLanguage(String language) {
-        mLanguage = language;
+        this.language = language;
     }
 
     public String getName() {
-        return mName;
+        return name;
     }
 
     public void setName(String name) {
-        mName = name;
-    }
-
-    public List<String> getSortBysAvailable() {
-        return mSortBysAvailable;
-    }
-
-    public void setSortBysAvailable(List<String> sortBysAvailable) {
-        mSortBysAvailable = sortBysAvailable;
+        this.name = name;
     }
 
     public String getUrl() {
-        return mUrl;
+        return url;
     }
 
     public void setUrl(String url) {
-        mUrl = url;
+        this.url = url;
     }
-
-    public UrlsToLogos getUrlsToLogos() {
-        return mUrlsToLogos;
-    }
-
-    public void setUrlsToLogos(UrlsToLogos urlsToLogos) {
-        mUrlsToLogos = urlsToLogos;
-    }
-
 }

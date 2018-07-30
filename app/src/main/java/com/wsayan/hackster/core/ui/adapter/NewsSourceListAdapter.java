@@ -93,12 +93,12 @@ public class NewsSourceListAdapter extends RecyclerView.Adapter<NewsSourceListAd
         return sources.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        protected TextView nameTextView, descriptionTextView;
-        protected ImageView favImageView;
-        protected LinearLayout itemLinearLayout;
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView nameTextView, descriptionTextView;
+        ImageView favImageView;
+        LinearLayout itemLinearLayout;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             initializeWidgets(itemView);
         }

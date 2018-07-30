@@ -1,6 +1,7 @@
 package com.wsayan.hackster.core.presenter;
 
 import com.wsayan.hackster.core.model.pojo.Sources;
+import com.wsayan.hackster.core.model.pojo.TopNews;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -14,4 +15,7 @@ import retrofit2.http.Query;
 public interface IApiInteractor {
     @GET("v2/sources")
     Call<Sources> getNewsSources(@Header("X-Api-Key") String apiKey, @Query("language") String language);
+
+    @GET("v2/top-headlines")
+    Call<TopNews> getTopNews(@Header("X-Api-Key") String apiKey, @Query("language") String language, @Query("country") String country, @Query("category") String category);
 }

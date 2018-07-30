@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.wsayan.hackster.core.R;
 import com.wsayan.hackster.core.ui.fragment.NewsShelfFragment;
 import com.wsayan.hackster.core.ui.fragment.NewsSourceFragment;
+import com.wsayan.hackster.core.ui.fragment.TopNewsFragment;
 
 /**
  * Created by wahid.sadique on 8/30/2017.
@@ -27,9 +28,12 @@ public class HomeTabAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new NewsSourceFragment();
+                fragment = new TopNewsFragment();
                 break;
             case 1:
+                fragment = new NewsSourceFragment();
+                break;
+            case 2:
                 fragment = new NewsShelfFragment();
                 break;
             default:
@@ -46,15 +50,17 @@ public class HomeTabAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return context.getString(R.string.news_tab);
+                return context.getString(R.string.top_news_tab);
             case 1:
+                return context.getString(R.string.news_tab);
+            case 2:
                 return context.getString(R.string.shelf_tab);
             default:
                 return null;

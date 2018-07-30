@@ -55,10 +55,9 @@ public class NewsSourceFragment extends Fragment {
 
     private void initializeData() {
         context = getActivity();
-        AppPresenter appPresenter = new AppPresenter();
-        dbInteractor = appPresenter.getDbInterface(context);
-        apiInteractor = appPresenter.getApiInterface();
-        sharedPref = appPresenter.getSharedPrefInterface(context);
+        dbInteractor = new AppPresenter().getDbInterface(context);
+        apiInteractor = new AppPresenter().getApiInterface();
+        sharedPref = new AppPresenter().getSharedPrefInterface(context);
         progressDialog = new ProgressDialog(context);
         downloadList();
     }

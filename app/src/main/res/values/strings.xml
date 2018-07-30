@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">AndroidDumbStructure</string>
-    <string name="title_activity_home_tabbed">F Society</string>
+    <string name="title_activity_home_tabbed">Huckster</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="news_tab">News List</string>
+    <string name="top_news_tab">Headlines</string>
+    <string name="news_tab">Sources</string>
     <string name="shelf_tab">Shelf</string>
 
     <!-- TODO: Remove or change this placeholder text -->
