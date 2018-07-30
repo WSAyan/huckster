@@ -45,6 +45,7 @@ public class TopNewsListAdapter extends RecyclerView.Adapter<TopNewsListAdapter.
         final String date = articles.get(position).getPublishedAt();
         final String name = articles.get(position).getTopNewsSource().getName();
 
+        holder.nameTextView.setText(name);
         holder.headLineTextView.setText(headLine);
         holder.dateTextView.setText(date);
 
@@ -90,7 +91,7 @@ public class TopNewsListAdapter extends RecyclerView.Adapter<TopNewsListAdapter.
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView headLineTextView, dateTextView;
+        TextView headLineTextView, dateTextView, nameTextView;
         ImageView newsImageView;
         RelativeLayout topItemRelativeLayout;
         ProgressBar iconProgressBar;
@@ -103,6 +104,7 @@ public class TopNewsListAdapter extends RecyclerView.Adapter<TopNewsListAdapter.
         private void initializeWidgets(View itemView) {
             headLineTextView = itemView.findViewById(R.id.top_news_item_headline_textView);
             dateTextView = itemView.findViewById(R.id.top_news_item_date_textView);
+            nameTextView = itemView.findViewById(R.id.top_news_item_name_textView);
             newsImageView = itemView.findViewById(R.id.top_news_item_news_imageView);
             topItemRelativeLayout = itemView.findViewById(R.id.top_news_item_RelativeLayout);
             iconProgressBar = itemView.findViewById(R.id.top_news_item_icon_progress_bar);
