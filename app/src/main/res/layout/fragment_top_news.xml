@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.wsayan.hackster.core.ui.fragment.TopNewsFragment">
+    tools:context="com.wsayan.huckster.core.ui.fragment.TopNewsFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/top_news_list_recyclerView"
