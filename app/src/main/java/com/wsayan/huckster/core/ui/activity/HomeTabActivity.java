@@ -1,6 +1,7 @@
 package com.wsayan.huckster.core.ui.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -72,6 +73,7 @@ public class HomeTabActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
+            startActivity(new Intent(HomeTabActivity.this, SettingsActivity.class));
             return true;
         }
 

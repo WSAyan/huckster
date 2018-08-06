@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/pref_header_general">
+
+        <ListPreference
+            android:defaultValue="3"
+            android:dialogTitle="@string/pref_title_country"
+            android:entries="@array/pref_country_entries"
+            android:entryValues="@array/pref_country_values"
+            android:key="@string/pref_key_country"
+            android:summary="@string/pref_title_summary_country"
+            android:title="@string/pref_title_country" />
+        <ListPreference
+            android:defaultValue="3"
+            android:dialogTitle="@string/pref_title_language"
+            android:entries="@array/pref_language_entries"
+            android:entryValues="@array/pref_language_values"
+            android:key="@string/pref_key_language"
+            android:summary="@string/pref_title_summary_language"
+            android:title="@string/pref_title_language" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_header_about">
+        <Preference
+            android:summary="@string/app_version"
+            android:title="@string/app_name" />
+
+        <Preference
+            android:summary="@string/pref_credit"
+            android:title="@string/pref_title_credit"></Preference>
+
+
+        <Preference
+            android:summary="@string/pref_license"
+            android:title="@string/pref_title_license"></Preference>
+    </PreferenceCategory>
+</PreferenceScreen>
