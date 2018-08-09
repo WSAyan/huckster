@@ -28,7 +28,6 @@
                 android:gravity="right"
                 android:text="Name"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-
                 android:textStyle="bold" />
 
             <ImageView
@@ -36,10 +35,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/top_news_item_name_textView"
-                android:layout_gravity="center"
                 android:layout_centerInParent="true"
-                android:scaleType="fitXY"
+                android:layout_gravity="center"
                 android:layout_margin="5dp"
+                android:maxHeight="200dp"
+                android:minHeight="100dp"
+                android:scaleType="fitXY"
                 android:src="@android:drawable/ic_menu_info_details" />
 
 

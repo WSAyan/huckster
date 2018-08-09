@@ -4,6 +4,6 @@
     tools:context="com.wsayan.huckster.core.ui.activity.HomeTabActivity">
     <item
         android:id="@+id/action_settings"
-        android:icon="@android:drawable/ic_menu_preferences"
+        android:icon="@drawable/ic_settings_icon"
         app:showAsAction="always" />
 </menu>
