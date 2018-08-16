@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.wsayan.huckster.core.R;
+import com.wsayan.huckster.core.presenter.AppPresenter;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
 
@@ -29,6 +30,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_main);
+            bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_settings_key_country)));
+            bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_settings_key_language)));
         }
     }
 
