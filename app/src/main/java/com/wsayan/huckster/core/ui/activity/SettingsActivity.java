@@ -2,6 +2,7 @@ package com.wsayan.huckster.core.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.preference.EditTextPreference;
@@ -17,6 +18,7 @@ import com.wsayan.huckster.core.R;
 import com.wsayan.huckster.core.presenter.AppPresenter;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +49,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
 
         sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
-                PreferenceManager
-                        .getDefaultSharedPreferences(preference.getContext())
+                new AppPresenter().getSharedPrefInterface(preference.getContext())
                         .getString(preference.getKey(), ""));
     }
 
