@@ -1,5 +1,7 @@
 package com.wsayan.huckster.core.ui.activity;
 
+import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,6 +13,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -20,6 +25,7 @@ import android.widget.ArrayAdapter;
 import com.wsayan.huckster.core.R;
 import com.wsayan.huckster.core.presenter.AppPresenter;
 import com.wsayan.huckster.core.ui.adapter.HomeTabAdapter;
+import com.wsayan.huckster.core.ui.adapter.SelectListAdapter;
 import com.wsayan.huckster.core.utility.GlobalConstants;
 import com.wsayan.huckster.core.utility.SharedPrefUtils;
 
@@ -71,18 +77,10 @@ public class HomeTabActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.bottom_navigation_country:
-                        showListDialog(new ArrayAdapter<>(
-                                context,
-                                android.R.layout.simple_list_item_single_choice,
-                                context.getResources().getStringArray(R.array.pref_country_entries)
-                        ));
+                        showListDialog(context.getResources().getStringArray(R.array.pref_country_entries));
                         return true;
                     case R.id.bottom_navigation_language:
-                        showListDialog(new ArrayAdapter<>(
-                                context,
-                                android.R.layout.simple_list_item_single_choice,
-                                context.getResources().getStringArray(R.array.pref_language_entries)
-                        ));
+                        showListDialog(context.getResources().getStringArray(R.array.pref_language_entries));
                         return true;
                     case R.id.bottom_navigation_category:
                         return true;
@@ -92,16 +90,34 @@ public class HomeTabActivity extends AppCompatActivity {
         });
     }
 
-    private void showListDialog(ArrayAdapter<String> arrayAdapter){
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+    private void showListDialog(String[] selectArray) {
+        /*AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
 
         dialogBuilder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+            @SuppressLint("CommitPrefEdits")
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                String value = context.getResources().getStringArray(R.array.pref_language_values)[which];
+                sharedPreferences.edit().putInt(SharedPrefUtils._LANGUAGE,which);
             }
         });
-        dialogBuilder.show();
+        dialogBuilder.show();*/
+
+        Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.dialog_select);
+        dialog.setTitle("SELECT HENTEN");
+
+
+        SelectListAdapter selectListAdapter = new SelectListAdapter(context, selectArray);
+        RecyclerView selectRecyclerView = dialog.findViewById(R.id.selectRecyclerView);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+        selectRecyclerView.setLayoutManager(layoutManager);
+        selectRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        selectRecyclerView.setAdapter(selectListAdapter);
+        selectListAdapter.notifyDataSetChanged();
+
+        dialog.show();
+
     }
 
     @Override
