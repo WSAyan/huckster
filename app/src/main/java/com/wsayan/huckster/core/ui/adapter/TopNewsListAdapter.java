@@ -2,13 +2,13 @@ package com.wsayan.huckster.core.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Callback;
@@ -51,7 +51,7 @@ public class TopNewsListAdapter extends RecyclerView.Adapter<TopNewsListAdapter.
 
         loadImage(imageUrl, holder.newsImageView, holder.iconProgressBar);
 
-        holder.topItemRelativeLayout.setOnClickListener(new View.OnClickListener() {
+        holder.topItemConsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (url != null) {
@@ -93,7 +93,7 @@ public class TopNewsListAdapter extends RecyclerView.Adapter<TopNewsListAdapter.
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView headLineTextView, dateTextView, nameTextView;
         ImageView newsImageView;
-        RelativeLayout topItemRelativeLayout;
+        ConstraintLayout topItemConsLayout;
         ProgressBar iconProgressBar;
 
         ViewHolder(View itemView) {
@@ -106,7 +106,7 @@ public class TopNewsListAdapter extends RecyclerView.Adapter<TopNewsListAdapter.
             dateTextView = itemView.findViewById(R.id.top_news_item_date_textView);
             nameTextView = itemView.findViewById(R.id.top_news_item_name_textView);
             newsImageView = itemView.findViewById(R.id.top_news_item_news_imageView);
-            topItemRelativeLayout = itemView.findViewById(R.id.top_news_item_RelativeLayout);
+            topItemConsLayout = itemView.findViewById(R.id.top_news_item_ConsLayout);
             iconProgressBar = itemView.findViewById(R.id.top_news_item_icon_progress_bar);
         }
     }

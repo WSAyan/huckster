@@ -1,79 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/apk/res-auto"
+    style="@style/CardView.Light"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="5dp">
+    android:layout_margin="5dp"
+    android:paddingBottom="5dp"
+    card_view:cardElevation="@dimen/activity_vertical_margin">
 
-    <android.support.v7.widget.CardView
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/top_news_item_ConsLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        card_view:cardElevation="@dimen/activity_vertical_margin">
+        android:layout_height="wrap_content">
 
-
-        <RelativeLayout
-            android:id="@+id/top_news_item_RelativeLayout"
+        <ImageView
+            android:id="@+id/top_news_item_news_imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:adjustViewBounds="true"
+            android:contentDescription="TODO"
+            android:maxHeight="200dp"
+            android:minHeight="150dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_trash" />
+
+        <ProgressBar
+            android:id="@+id/top_news_item_icon_progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:gravity="center">
+            android:foregroundGravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/top_news_item_news_imageView"
+            app:layout_constraintEnd_toEndOf="@+id/top_news_item_news_imageView"
+            app:layout_constraintStart_toStartOf="@+id/top_news_item_news_imageView"
+            app:layout_constraintTop_toTopOf="@+id/top_news_item_news_imageView" />
 
-            <TextView
-                android:id="@+id/top_news_item_name_textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:text="Name"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/top_news_item_headline_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            android:text="Headline"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+            app:layout_constraintStart_toStartOf="@+id/top_news_item_news_imageView"
+            app:layout_constraintTop_toBottomOf="@+id/top_news_item_news_imageView"
+            app:layout_constraintVertical_bias="0.5" />
 
-            <ImageView
-                android:id="@+id/top_news_item_news_imageView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/top_news_item_name_textView"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:maxHeight="200dp"
-                android:minHeight="100dp"
-                android:scaleType="fitXY"
-                android:src="@android:drawable/ic_menu_info_details" />
+        <TextView
+            android:id="@+id/top_news_item_name_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            android:text="Name"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/top_news_item_headline_textView"
+            app:layout_constraintTop_toBottomOf="@+id/top_news_item_headline_textView"
+            app:layout_constraintVertical_bias="0.5" />
 
+        <TextView
+            android:id="@+id/top_news_item_date_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_news_item_headline_textView"
+            android:padding="1dp"
+            android:text="Date"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+            app:layout_constraintStart_toStartOf="@+id/top_news_item_name_textView"
+            app:layout_constraintTop_toBottomOf="@+id/top_news_item_name_textView"
+            app:layout_constraintVertical_bias="0.5" />
 
-            <ProgressBar
-                android:id="@+id/top_news_item_icon_progress_bar"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:visibility="gone" />
-
-
-            <TextView
-                android:id="@+id/top_news_item_headline_textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/top_news_item_news_imageView"
-                android:layout_gravity="left"
-                android:text="Headline"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/top_news_item_date_textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/top_news_item_headline_textView"
-                android:layout_gravity="left"
-                android:text="Date"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
-
-        </RelativeLayout>
-
-
-    </android.support.v7.widget.CardView>
-</RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>
