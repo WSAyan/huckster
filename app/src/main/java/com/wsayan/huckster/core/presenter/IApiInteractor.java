@@ -14,7 +14,7 @@ import retrofit2.http.Query;
 
 public interface IApiInteractor {
     @GET("v2/sources")
-    Call<Sources> getNewsSources(@Header("X-Api-Key") String apiKey, @Query("language") String language);
+    Call<Sources> getNewsSources(@Header("X-Api-Key") String apiKey, @Query("language") String language, @Query("country") String country);
 
     @GET("v2/top-headlines")
     Call<TopNews> getTopNews(@Header("X-Api-Key") String apiKey, @Query("language") String language, @Query("country") String country, @Query("category") String category);

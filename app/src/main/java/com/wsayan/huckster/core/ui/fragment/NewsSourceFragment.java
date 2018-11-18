@@ -4,6 +4,8 @@ package com.wsayan.huckster.core.ui.fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -35,7 +37,6 @@ public class NewsSourceFragment extends Fragment {
     private Context context;
     private IDbInteractor dbInteractor;
     private IApiInteractor apiInteractor;
-    private ProgressDialog progressDialog;
     private Call<Sources> sourcesCall;
     private List<Source> sources;
     private SharedPreferences sharedPref;
@@ -58,7 +59,6 @@ public class NewsSourceFragment extends Fragment {
         dbInteractor = new AppPresenter().getDbInterface(context);
         apiInteractor = new AppPresenter().getApiInterface();
         sharedPref = new AppPresenter().getSharedPrefInterface(context);
-        progressDialog = new ProgressDialog(context);
         downloadList();
     }
 
@@ -72,9 +72,7 @@ public class NewsSourceFragment extends Fragment {
     }
 
     private void downloadList() {
-        progressDialog.setMessage(context.getString(R.string.progress_dialog_loading));
-        progressDialog.show();
-        sourcesCall = apiInteractor.getNewsSources(sharedPref.getString(SharedPrefUtils._API_KEY, null), sharedPref.getString(SharedPrefUtils._LANGUAGE, null));
+        sourcesCall = apiInteractor.getNewsSources(sharedPref.getString(SharedPrefUtils._API_KEY, null), sharedPref.getString(SharedPrefUtils._LANGUAGE, null), sharedPref.getString(SharedPrefUtils._COUNTRY, null));
         sourcesCall.enqueue(new Callback<Sources>() {
             @Override
             public void onResponse(Call<Sources> call, Response<Sources> response) {
@@ -82,12 +80,10 @@ public class NewsSourceFragment extends Fragment {
                     sources = response.body().getSources();
                     createList(sources);
                 }
-                progressDialog.dismiss();
             }
 
             @Override
             public void onFailure(Call<Sources> call, Throwable t) {
-                progressDialog.dismiss();
                 sourcesCall.cancel();
             }
         });
@@ -131,9 +127,6 @@ public class NewsSourceFragment extends Fragment {
     }
 
     private void flush() {
-        if (progressDialog != null) {
-            progressDialog.dismiss();
-        }
         if (sourcesCall != null) {
             sourcesCall.cancel();
         }

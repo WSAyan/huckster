@@ -7,6 +7,7 @@
     <string name="top_news_tab">Headlines</string>
     <string name="news_tab">Sources</string>
     <string name="shelf_tab">Shelf</string>
+    <string name="search_hint">Search</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -37,5 +38,6 @@
     <string name="pref_settings_license">Copyright © 2017 Wahid Sadique Ayan</string>
     <string name="pref_settings_title_credit">Credits</string>
     <string name="pref_settings_credit">Powered by NewsAPI.org</string>
+    <string name="search_title">Search</string>
 
 </resources>

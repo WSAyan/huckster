@@ -2,6 +2,7 @@ package com.wsayan.huckster.core.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -36,7 +38,7 @@ public class HomeTabActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private SharedPreferences sharedPreferences;
-    private BottomNavigationView bottomNavigationView;
+    //private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,7 @@ public class HomeTabActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         mViewPager = findViewById(R.id.container);
         tabLayout = findViewById(R.id.tabs);
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        //bottomNavigationView = findViewById(R.id.bottom_navigation);
     }
 
     private void initializeData() {
@@ -69,10 +71,11 @@ public class HomeTabActivity extends AppCompatActivity {
         sharedPreferences = new AppPresenter().getSharedPrefInterface(context);
         sharedPreferences.edit().putString(SharedPrefUtils._API_KEY, GlobalConstants.API_KEY).apply();
         sharedPreferences.edit().putString(SharedPrefUtils._LANGUAGE, GlobalConstants.ENGLISH).apply();
+        sharedPreferences.edit().putString(SharedPrefUtils._COUNTRY, GlobalConstants.US).apply();
     }
 
     private void eventListeners() {
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        /*bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
@@ -87,25 +90,13 @@ public class HomeTabActivity extends AppCompatActivity {
                 }
                 return false;
             }
-        });
+        });*/
     }
 
     private void showListDialog(String[] selectArray) {
-        /*AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
-
-        dialogBuilder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
-            @SuppressLint("CommitPrefEdits")
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String value = context.getResources().getStringArray(R.array.pref_language_values)[which];
-                sharedPreferences.edit().putInt(SharedPrefUtils._LANGUAGE,which);
-            }
-        });
-        dialogBuilder.show();*/
-
         Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_select);
-        dialog.setTitle("SELECT HENTEN");
+        dialog.setTitle("SELECT");
 
 
         SelectListAdapter selectListAdapter = new SelectListAdapter(context, selectArray);
@@ -123,6 +114,13 @@ public class HomeTabActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home_tabbed, menu);
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager != null ? searchManager.getSearchableInfo(getComponentName()) : null);
+
         return true;
     }
 
@@ -131,10 +129,10 @@ public class HomeTabActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
             startActivity(new Intent(HomeTabActivity.this, SettingsActivity.class));
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }

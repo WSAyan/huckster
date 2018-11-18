@@ -6,4 +6,5 @@ public final class SharedPrefUtils {
 
     public static final String _API_KEY = "API_KEY";
     public static final String _LANGUAGE = "LANGUAGE";
+    public static final String _COUNTRY = "COUNTRY";
 }

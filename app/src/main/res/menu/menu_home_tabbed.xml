@@ -2,8 +2,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.wsayan.huckster.core.ui.activity.HomeTabActivity">
-    <item
+    <!--<item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_settings_icon"
-        app:showAsAction="always" />
+        app:showAsAction="always" />-->
+
+    <item android:id="@+id/search"
+        android:title="@string/search_title"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="collapseActionView|ifRoom"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
 </menu>
