@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * Created by wahid.sadique on 2/2/2018.
@@ -23,14 +24,17 @@ public class CommonOperations {
         return stringBuilder.toString();
     }
 
-    public static String formattedDate(String dateString) {
-        String formattedDateSting = "";
-        SimpleDateFormat format = new SimpleDateFormat(GlobalConstants.DATE_FORMAT);
+    public static String formattedDateAndTime(String dateString) {
+        String formattedTime = "";
+        SimpleDateFormat sdf = new SimpleDateFormat(GlobalConstants.DATE_FORMAT_PATTERN_ORIGINAL);
+        SimpleDateFormat output = new SimpleDateFormat(GlobalConstants.DATE_FORMAT_PATTERN_DISPLAY);
         try {
-            Date date = format.parse(dateString);
-            formattedDateSting = date.toString();
-        } catch (ParseException e) {
+            Date d = sdf.parse(dateString);
+            formattedTime = output.format(d);
+        } catch (ParseException ignored) {
+
         }
-        return formattedDateSting;
+        return formattedTime;
     }
+
 }

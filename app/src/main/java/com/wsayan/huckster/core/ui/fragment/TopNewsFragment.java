@@ -61,16 +61,14 @@ public class TopNewsFragment extends Fragment {
         context = getActivity();
         apiInteractor = new AppPresenter().getApiInterface();
         sharedPref = new AppPresenter().getSharedPrefInterface(context);
-        progressDialog = new ProgressDialog(context);
+        progressDialog = new ProgressDialog(context, R.style.progress_bar_style);
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         downLoadList();
     }
 
     private void downLoadList() {
-        //progressDialog.setMessage(context.getString(R.string.progress_dialog_loading));
-        progressDialog.setProgressStyle(R.style.progress_bar_style);
-        progressDialog.setCancelable(false);
-        progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
-        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         progressDialog.show();
         topNewsCall = apiInteractor.getTopNews(sharedPref.getString(SharedPrefUtils._API_KEY, null), sharedPref.getString(SharedPrefUtils._LANGUAGE, null), sharedPref.getString(SharedPrefUtils._COUNTRY, null), null);
         topNewsCall.enqueue(new Callback<TopNews>() {

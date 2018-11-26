@@ -6,8 +6,8 @@
     style="@style/CardView.Light"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:paddingBottom="5dp"
+    android:layout_margin="@dimen/margin_def"
+    android:paddingBottom="@dimen/margin_def"
     card_view:cardElevation="@dimen/activity_vertical_margin">
 
     <android.support.constraint.ConstraintLayout
@@ -15,18 +15,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/top_news_item_news_imageView"
+        <RelativeLayout
+            android:id="@+id/top_news_item_news_relativeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="false"
-            android:contentDescription="TODO"
-            android:maxHeight="200dp"
-            android:minHeight="150dp"
-            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_trash" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/top_news_item_news_imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="TODO"
+                android:maxHeight="@dimen/image_view_max"
+                android:minHeight="@dimen/image_view_min"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_trash" />
+
+        </RelativeLayout>
+
 
         <ProgressBar
             android:id="@+id/top_news_item_icon_progress_bar"
@@ -37,10 +45,10 @@
             android:layout_gravity="center"
             android:foregroundGravity="center"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/top_news_item_news_imageView"
-            app:layout_constraintEnd_toEndOf="@+id/top_news_item_news_imageView"
-            app:layout_constraintStart_toStartOf="@+id/top_news_item_news_imageView"
-            app:layout_constraintTop_toTopOf="@+id/top_news_item_news_imageView" />
+            app:layout_constraintBottom_toBottomOf="@+id/top_news_item_news_relativeLayout"
+            app:layout_constraintEnd_toEndOf="@+id/top_news_item_news_relativeLayout"
+            app:layout_constraintStart_toStartOf="@+id/top_news_item_news_relativeLayout"
+            app:layout_constraintTop_toTopOf="@+id/top_news_item_news_relativeLayout" />
 
         <TextView
             android:id="@+id/top_news_item_headline_textView"
@@ -49,8 +57,8 @@
             android:padding="1dp"
             android:text="Headline"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
-            app:layout_constraintStart_toStartOf="@+id/top_news_item_news_imageView"
-            app:layout_constraintTop_toBottomOf="@+id/top_news_item_news_imageView"
+            app:layout_constraintStart_toStartOf="@+id/top_news_item_news_relativeLayout"
+            app:layout_constraintTop_toBottomOf="@+id/top_news_item_news_relativeLayout"
             app:layout_constraintVertical_bias="0.5" />
 
         <TextView
@@ -59,8 +67,8 @@
             android:layout_height="wrap_content"
             android:padding="1dp"
             android:text="Name"
-            android:textColor="@color/colorAccent"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+            android:textColor="@color/colorAccent"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/top_news_item_headline_textView"
             app:layout_constraintTop_toBottomOf="@+id/top_news_item_headline_textView"
@@ -71,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/top_news_item_headline_textView"
-            android:padding="1dp"
+            android:padding="@dimen/padding_min"
             android:text="Date"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
             app:layout_constraintStart_toStartOf="@+id/top_news_item_name_textView"

@@ -48,7 +48,7 @@ public class TopNewsListAdapter extends RecyclerView.Adapter<TopNewsListAdapter.
 
         holder.nameTextView.setText(name);
         holder.headLineTextView.setText(headLine);
-        holder.dateTextView.setText(CommonOperations.formattedDate(date));
+        holder.dateTextView.setText(CommonOperations.formattedDateAndTime(date));
 
         loadImage(imageUrl, holder.newsImageView, holder.iconProgressBar);
 

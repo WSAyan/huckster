@@ -10,7 +10,9 @@ public final class GlobalConstants {
     public static final String EXT_TAG_URL = "_url";
     public static final String EXT_TAG_NAME = "_name";
 
-    public static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+    public static final String DATE_FORMAT_PATTERN_ORIGINAL = "yyyy-MM-dd'T'HH:mm:ss";
+    public static final String DATE_FORMAT_PATTERN_DISPLAY = "yyyy-MM-dd HH:mm:ss";
+    public static final String TIMEZONE = "GMT";
 
     public static final String ENGLISH = "en";
     public static final String ARABIC = "ar";
