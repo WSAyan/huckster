@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import com.wsayan.huckster.core.R;
 import com.wsayan.huckster.core.model.pojo.Article;
 import com.wsayan.huckster.core.ui.activity.NewsActivity;
+import com.wsayan.huckster.core.utility.CommonOperations;
 import com.wsayan.huckster.core.utility.GlobalConstants;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public class TopNewsListAdapter extends RecyclerView.Adapter<TopNewsListAdapter.
 
         holder.nameTextView.setText(name);
         holder.headLineTextView.setText(headLine);
-        holder.dateTextView.setText(date);
+        holder.dateTextView.setText(CommonOperations.formattedDate(date));
 
         loadImage(imageUrl, holder.newsImageView, holder.iconProgressBar);
 
