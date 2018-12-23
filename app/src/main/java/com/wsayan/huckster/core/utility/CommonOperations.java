@@ -37,4 +37,8 @@ public class CommonOperations {
         return formattedTime;
     }
 
+    public static String iconUrlMaker(String url){
+        return WebUtils.BASE_IMAGE_URL + "?url=" + url +"&size=70..120..200";
+    }
+
 }

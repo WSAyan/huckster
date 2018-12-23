@@ -5,20 +5,32 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 import com.wsayan.huckster.core.R;
 import com.wsayan.huckster.core.model.pojo.Source;
 import com.wsayan.huckster.core.presenter.IDbInteractor;
 import com.wsayan.huckster.core.ui.activity.NewsActivity;
+import com.wsayan.huckster.core.utility.CommonOperations;
 import com.wsayan.huckster.core.utility.GlobalConstants;
+import com.wsayan.huckster.core.utility.WebUtils;
 
+import java.io.IOException;
 import java.util.List;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by wahid.sadique on 9/17/2017.
@@ -78,6 +90,9 @@ public class NewsSourceListAdapter extends RecyclerView.Adapter<NewsSourceListAd
 
             }
         });
+
+        Log.w("--->", CommonOperations.iconUrlMaker(url));
+        loadImage(CommonOperations.iconUrlMaker(url), holder.iconImageView, holder.iconProgressBar);
     }
 
     private Bitmap getMarkerBitmap(Boolean isFavourite) {
@@ -88,6 +103,22 @@ public class NewsSourceListAdapter extends RecyclerView.Adapter<NewsSourceListAd
         }
     }
 
+    private void loadImage(String url, ImageView imageView, final ProgressBar progressBar) {
+        progressBar.setVisibility(View.VISIBLE);
+        Picasso picasso = Picasso.with(context);
+        picasso.load(url).error(R.drawable.ic_home_black_24dp).into(imageView, new Callback() {
+            @Override
+            public void onSuccess() {
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onError() {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+    }
+
     @Override
     public int getItemCount() {
         return sources.size();
@@ -95,8 +126,9 @@ public class NewsSourceListAdapter extends RecyclerView.Adapter<NewsSourceListAd
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView nameTextView, descriptionTextView;
-        ImageView favImageView;
+        ImageView favImageView, iconImageView;
         LinearLayout itemLinearLayout;
+        ProgressBar iconProgressBar;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -108,6 +140,8 @@ public class NewsSourceListAdapter extends RecyclerView.Adapter<NewsSourceListAd
             descriptionTextView = itemView.findViewById(R.id.source_item_description_textView);
             favImageView = itemView.findViewById(R.id.source_item_fav_imageView);
             itemLinearLayout = itemView.findViewById(R.id.source_item_LinearLayout);
+            iconImageView = itemView.findViewById(R.id.source_item_icon_imageView);
+            iconProgressBar = itemView.findViewById(R.id.source_item_icon_progress_bar);
         }
     }
 }
