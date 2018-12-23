@@ -8,12 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 import com.wsayan.huckster.core.R;
 import com.wsayan.huckster.core.model.binder.DataTable;
 import com.wsayan.huckster.core.presenter.IDbInteractor;
 import com.wsayan.huckster.core.ui.activity.NewsActivity;
+import com.wsayan.huckster.core.utility.CommonOperations;
 import com.wsayan.huckster.core.utility.GlobalConstants;
 
 /**
@@ -69,6 +73,8 @@ public class NewsShelfListAdapter extends RecyclerView.Adapter<NewsShelfListAdap
                 }
             }
         });
+
+        loadImage(CommonOperations.iconUrlMaker(url), holder.iconImageView, holder.iconProgressBar);
     }
 
     @Override
@@ -76,10 +82,27 @@ public class NewsShelfListAdapter extends RecyclerView.Adapter<NewsShelfListAdap
         return dataTable.size();
     }
 
+    private void loadImage(String url, ImageView imageView, final ProgressBar progressBar) {
+        progressBar.setVisibility(View.VISIBLE);
+        Picasso picasso = Picasso.with(context);
+        picasso.load(url).error(R.drawable.ic_folded_newspaper).into(imageView, new Callback() {
+            @Override
+            public void onSuccess() {
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onError() {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+    }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         protected TextView nameTextView, descriptionTextView;
-        protected ImageView deleteImageView;
+        protected ImageView deleteImageView, iconImageView;
         protected LinearLayout shelfItemLinearLayout;
+        protected ProgressBar iconProgressBar;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -91,6 +114,8 @@ public class NewsShelfListAdapter extends RecyclerView.Adapter<NewsShelfListAdap
             descriptionTextView = itemView.findViewById(R.id.shelf_item_description_textView);
             deleteImageView = itemView.findViewById(R.id.shelf_item_delete_imageView);
             shelfItemLinearLayout = itemView.findViewById(R.id.shelf_item_LinearLayout);
+            iconImageView = itemView.findViewById(R.id.shelf_item_icon_imageView);
+            iconProgressBar = itemView.findViewById(R.id.shelf_item_icon_progress_bar);
         }
     }
 }

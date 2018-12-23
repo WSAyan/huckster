@@ -91,7 +91,6 @@ public class NewsSourceListAdapter extends RecyclerView.Adapter<NewsSourceListAd
             }
         });
 
-        Log.w("--->", CommonOperations.iconUrlMaker(url));
         loadImage(CommonOperations.iconUrlMaker(url), holder.iconImageView, holder.iconProgressBar);
     }
 
@@ -106,7 +105,7 @@ public class NewsSourceListAdapter extends RecyclerView.Adapter<NewsSourceListAd
     private void loadImage(String url, ImageView imageView, final ProgressBar progressBar) {
         progressBar.setVisibility(View.VISIBLE);
         Picasso picasso = Picasso.with(context);
-        picasso.load(url).error(R.drawable.ic_home_black_24dp).into(imageView, new Callback() {
+        picasso.load(url).error(R.drawable.ic_folded_newspaper).into(imageView, new Callback() {
             @Override
             public void onSuccess() {
                 progressBar.setVisibility(View.GONE);
