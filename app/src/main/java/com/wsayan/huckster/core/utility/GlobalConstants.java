@@ -21,7 +21,7 @@ public final class GlobalConstants {
     public static final String FRENCH = "fr";
 
     public static final String US = "us";
-    public static final String ENGLAND = "eng";
+    public static final String ENGLAND = "eg";
     public static final String CANADA = "ca";
     public static final String AUSTRALIA = "au";
     public static final String ARAB = "ar";

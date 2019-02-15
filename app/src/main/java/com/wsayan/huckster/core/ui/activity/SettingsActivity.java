@@ -33,7 +33,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_main);
             bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_settings_key_country)));
-            bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_settings_key_language)));
+            bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_settings_key_category)));
         }
     }
 
@@ -48,6 +48,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     private static void bindPreferenceSummaryToValue(Preference preference) {
         preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
 
+        //preference.setSummary(new AppPresenter().getSharedPrefInterface(preference.getContext()).getString(preference.getKey(), ""));
         sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
                 new AppPresenter().getSharedPrefInterface(preference.getContext())
                         .getString(preference.getKey(), ""));
@@ -67,10 +68,17 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                                 ? listPreference.getEntries()[index]
                                 : null);
 
+                String value = index >= 0
+                        ? (String) listPreference.getEntries()[index]
+                        : null;
+                String key = preference.getKey();
+                new AppPresenter().getSharedPrefInterface(preference.getContext()).edit().putString(key, value).apply();
             } else {
                 preference.setSummary(stringValue);
             }
             return true;
         }
     };
+
+
 }

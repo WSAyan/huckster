@@ -69,9 +69,13 @@ public class HomeTabActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
 
         sharedPreferences = new AppPresenter().getSharedPrefInterface(context);
+
         sharedPreferences.edit().putString(SharedPrefUtils._API_KEY, GlobalConstants.API_KEY).apply();
-        sharedPreferences.edit().putString(SharedPrefUtils._LANGUAGE, GlobalConstants.ENGLISH).apply();
-        sharedPreferences.edit().putString(SharedPrefUtils._COUNTRY, GlobalConstants.US).apply();
+        if(sharedPreferences.getString(SharedPrefUtils._COUNTRY,"").isEmpty()){
+            sharedPreferences.edit().putString(SharedPrefUtils._LANGUAGE, GlobalConstants.ENGLISH).apply();
+            sharedPreferences.edit().putString(SharedPrefUtils._COUNTRY, GlobalConstants.US).apply();
+            sharedPreferences.edit().putString(SharedPrefUtils._CATEGORY, "sports").apply();
+        }
     }
 
     private void eventListeners() {
@@ -129,10 +133,10 @@ public class HomeTabActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        /*if (id == R.id.action_settings) {
+        if (id == R.id.action_settings) {
             startActivity(new Intent(HomeTabActivity.this, SettingsActivity.class));
             return true;
-        }*/
+        }
 
         return super.onOptionsItemSelected(item);
     }

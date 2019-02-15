@@ -3,7 +3,7 @@
     <PreferenceCategory android:title="@string/pref_settings_header_general">
 
         <ListPreference
-            android:defaultValue="3"
+            android:defaultValue="1"
             android:dialogTitle="@string/pref_settings_title_country"
             android:entries="@array/pref_country_entries"
             android:entryValues="@array/pref_country_values"
@@ -11,13 +11,13 @@
             android:summary="@string/pref_settings_title_summary_country"
             android:title="@string/pref_settings_title_country" />
         <ListPreference
-            android:defaultValue="3"
-            android:dialogTitle="@string/pref_settings_title_language"
-            android:entries="@array/pref_language_entries"
-            android:entryValues="@array/pref_language_values"
-            android:key="@string/pref_settings_key_language"
-            android:summary="@string/pref_settings_title_summary_language"
-            android:title="@string/pref_settings_title_language" />
+            android:defaultValue="1"
+            android:dialogTitle="@string/pref_settings_title_category"
+            android:entries="@array/pref_category_entries"
+            android:entryValues="@array/pref_category_values"
+            android:key="@string/pref_settings_key_category"
+            android:summary="@string/pref_settings_title_summary_category"
+            android:title="@string/pref_settings_title_category" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_settings_header_about">

@@ -19,8 +19,8 @@
             android:id="@+id/source_item_icon_linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:gravity="center">
 
             <ImageView
@@ -38,8 +38,8 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_centerInParent="true"
             android:foregroundGravity="center"
             android:visibility="visible" />
@@ -48,12 +48,12 @@
             android:id="@+id/source_item_LinearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
-            android:layout_toStartOf="@+id/source_item_fav_linearLayout"
-            android:layout_toLeftOf="@+id/source_item_fav_linearLayout"
+            android:layout_marginStart="3dp"
             android:layout_toEndOf="@+id/source_item_icon_linearLayout"
+            android:layout_toLeftOf="@+id/source_item_fav_linearLayout"
             android:layout_toRightOf="@+id/source_item_icon_linearLayout"
+            android:layout_toStartOf="@+id/source_item_fav_linearLayout"
             android:orientation="vertical">
 
             <TextView
@@ -78,11 +78,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center|end"
                 android:text="...Tap for more"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="@color/indigo_a400"
-                android:textStyle="bold" />
+                android:textColor="@color/indigo_a400" />
         </LinearLayout>
 
         <LinearLayout

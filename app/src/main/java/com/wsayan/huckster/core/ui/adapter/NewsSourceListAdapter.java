@@ -120,7 +120,11 @@ public class NewsSourceListAdapter extends RecyclerView.Adapter<NewsSourceListAd
 
     @Override
     public int getItemCount() {
-        return sources.size();
+        int size = 0;
+        if(sources != null){
+          size = sources.size();
+        }
+        return size;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
