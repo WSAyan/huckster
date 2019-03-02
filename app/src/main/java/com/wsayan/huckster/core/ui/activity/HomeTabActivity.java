@@ -74,7 +74,7 @@ public class HomeTabActivity extends AppCompatActivity {
         if(sharedPreferences.getString(SharedPrefUtils._COUNTRY,"").isEmpty()){
             sharedPreferences.edit().putString(SharedPrefUtils._LANGUAGE, GlobalConstants.ENGLISH).apply();
             sharedPreferences.edit().putString(SharedPrefUtils._COUNTRY, GlobalConstants.US).apply();
-            sharedPreferences.edit().putString(SharedPrefUtils._CATEGORY, "sports").apply();
+            sharedPreferences.edit().putString(SharedPrefUtils._CATEGORY, getResources().getStringArray(R.array.pref_category_values)[0]).apply();
         }
     }
 

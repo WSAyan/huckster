@@ -63,19 +63,27 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 ListPreference listPreference = (ListPreference) preference;
                 int index = listPreference.findIndexOfValue(stringValue);
 
-                preference.setSummary(
+                /*preference.setSummary(
                         index >= 0
                                 ? listPreference.getEntries()[index]
-                                : null);
+                                : null);*/
 
                 String value = index >= 0
-                        ? (String) listPreference.getEntries()[index]
+                        ? (String) listPreference.getEntryValues()[index]
                         : null;
                 String key = preference.getKey();
-                new AppPresenter().getSharedPrefInterface(preference.getContext()).edit().putString(key, value).apply();
-            } else {
-                preference.setSummary(stringValue);
+
+                if (value != null && !value.isEmpty()) {
+                    new AppPresenter().getSharedPrefInterface(preference.getContext()).edit().putString(key, value).apply();
+                }
+
+                stringValue = new AppPresenter().getSharedPrefInterface(preference.getContext())
+                        .getString(key, "");
             }
+
+
+            preference.setSummary(stringValue);
+
             return true;
         }
     };
