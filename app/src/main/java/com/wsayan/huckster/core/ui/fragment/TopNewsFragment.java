@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.wsayan.huckster.core.R;
 import com.wsayan.huckster.core.model.pojo.Article;
 import com.wsayan.huckster.core.model.pojo.TopNews;
@@ -70,7 +72,7 @@ public class TopNewsFragment extends Fragment {
 
     private void downLoadList() {
         progressDialog.show();
-        topNewsCall = apiInteractor.getTopNews(sharedPref.getString(SharedPrefUtils._API_KEY, null), sharedPref.getString(SharedPrefUtils._LANGUAGE, null), sharedPref.getString(SharedPrefUtils._COUNTRY, null), null);
+        topNewsCall = apiInteractor.getTopNews(sharedPref.getString(SharedPrefUtils._API_KEY, null), sharedPref.getString(SharedPrefUtils._LANGUAGE, null), sharedPref.getString(SharedPrefUtils._COUNTRY, null), sharedPref.getString(SharedPrefUtils._CATEGORY, null));
         topNewsCall.enqueue(new Callback<TopNews>() {
             @Override
             public void onResponse(Call<TopNews> call, Response<TopNews> response) {

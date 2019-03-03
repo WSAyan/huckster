@@ -41,5 +41,8 @@
     <string name="pref_settings_title_credit">Credits</string>
     <string name="pref_settings_credit">Powered by NewsAPI.org</string>
     <string name="search_title">Search</string>
+    <string name="dialog_positive">OK</string>
+    <string name="dialog_negative">Cancel</string>
+    <string name="item_tap_for_more">...Tap for more</string>
 
 </resources>

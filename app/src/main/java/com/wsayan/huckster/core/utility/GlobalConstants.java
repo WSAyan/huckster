@@ -1,5 +1,7 @@
 package com.wsayan.huckster.core.utility;
 
+import com.wsayan.huckster.core.R;
+
 /**
  * Created by wahid.sadique on 1/28/2018.
  */
@@ -26,5 +28,7 @@ public final class GlobalConstants {
     public static final String AUSTRALIA = "au";
     public static final String ARAB = "ar";
     public static final String FRANCE = "fr";
+
+    public static int[] COUNTRY_ICONS = {R.drawable.ic_usa, R.drawable.ic_uk, R.drawable.ic_canada, R.drawable.ic_australia};
 
 }

@@ -37,8 +37,18 @@ public class CommonOperations {
         return formattedTime;
     }
 
-    public static String iconUrlMaker(String url){
-        return WebUtils.BASE_IMAGE_URL + "?url=" + url +"&size=70..120..200";
+    public static String iconUrlMaker(String url) {
+        return WebUtils.BASE_IMAGE_URL + "?url=" + url + "&size=70..120..200";
+    }
+
+    public static int getSharedPrefListPosition(String[] array, String key) {
+        int position = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(key)) {
+                position = i;
+            }
+        }
+        return position;
     }
 
 }

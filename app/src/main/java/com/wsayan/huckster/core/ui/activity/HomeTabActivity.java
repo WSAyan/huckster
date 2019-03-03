@@ -1,15 +1,13 @@
 package com.wsayan.huckster.core.ui.activity;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -19,15 +17,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 
 import com.wsayan.huckster.core.R;
 import com.wsayan.huckster.core.presenter.AppPresenter;
 import com.wsayan.huckster.core.ui.adapter.HomeTabAdapter;
 import com.wsayan.huckster.core.ui.adapter.SelectListAdapter;
+import com.wsayan.huckster.core.utility.CommonOperations;
 import com.wsayan.huckster.core.utility.GlobalConstants;
 import com.wsayan.huckster.core.utility.SharedPrefUtils;
 
@@ -37,8 +35,10 @@ public class HomeTabActivity extends AppCompatActivity {
     private Context context;
     private Toolbar toolbar;
     private TabLayout tabLayout;
+    private ImageView toolbarImageView;
     private SharedPreferences sharedPreferences;
     //private BottomNavigationView bottomNavigationView;
+    private int selectedCatIndex, selectedCountryIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +53,28 @@ public class HomeTabActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         mViewPager = findViewById(R.id.container);
         tabLayout = findViewById(R.id.tabs);
+        //toolbarImageView = findViewById(R.id.toolbar_imageView);
         //bottomNavigationView = findViewById(R.id.bottom_navigation);
     }
 
     private void initializeData() {
-        setSupportActionBar(toolbar);
-
         context = this;
+        setSupportActionBar(toolbar);
+        sharedPreferences = new AppPresenter().getSharedPrefInterface(context);
+        selectedCatIndex = CommonOperations.getSharedPrefListPosition(getResources().getStringArray(R.array.pref_category_values), sharedPreferences.getString(SharedPrefUtils._CATEGORY, ""));
+        selectedCountryIndex = CommonOperations.getSharedPrefListPosition(getResources().getStringArray(R.array.pref_country_values), sharedPreferences.getString(SharedPrefUtils._COUNTRY, ""));
+
+        getSupportActionBar().setTitle(" " + getResources().getStringArray(R.array.pref_category_entries)[selectedCatIndex]);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getSupportActionBar().setLogo(context.getTheme().getDrawable(GlobalConstants.COUNTRY_ICONS[selectedCountryIndex]));
+        }
+
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            toolbarImageView.destroyDrawingCache();
+            toolbarImageView.setImageDrawable(context.getTheme().getDrawable(GlobalConstants.COUNTRY_ICONS[selectedCountryIndex]));
+        }*/
+
         mSectionsPagerAdapter = new HomeTabAdapter(getSupportFragmentManager(), context);
 
         assert mViewPager != null;
@@ -68,14 +83,6 @@ public class HomeTabActivity extends AppCompatActivity {
         assert tabLayout != null;
         tabLayout.setupWithViewPager(mViewPager);
 
-        sharedPreferences = new AppPresenter().getSharedPrefInterface(context);
-
-        sharedPreferences.edit().putString(SharedPrefUtils._API_KEY, GlobalConstants.API_KEY).apply();
-        if(sharedPreferences.getString(SharedPrefUtils._COUNTRY,"").isEmpty()){
-            sharedPreferences.edit().putString(SharedPrefUtils._LANGUAGE, GlobalConstants.ENGLISH).apply();
-            sharedPreferences.edit().putString(SharedPrefUtils._COUNTRY, GlobalConstants.US).apply();
-            sharedPreferences.edit().putString(SharedPrefUtils._CATEGORY, getResources().getStringArray(R.array.pref_category_values)[0]).apply();
-        }
     }
 
     private void eventListeners() {
@@ -138,7 +145,47 @@ public class HomeTabActivity extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.action_category) {
+            showCategoryListDialog();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
+    private void showCategoryListDialog() {
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(context, R.style.Theme_AppCompat_Light_Dialog);
+        alertDialog.setTitle(context.getString(R.string.pref_settings_title_category));
+        selectedCatIndex = CommonOperations.getSharedPrefListPosition(getResources().getStringArray(R.array.pref_category_values), sharedPreferences.getString(SharedPrefUtils._CATEGORY, ""));
+        alertDialog.setSingleChoiceItems(getResources().getStringArray(R.array.pref_category_entries), selectedCatIndex, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                selectedCatIndex = i;
+            }
+        });
+
+        alertDialog.setPositiveButton(context.getString(R.string.dialog_positive), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                sharedPreferences.edit().putString(SharedPrefUtils._CATEGORY, getResources().getStringArray(R.array.pref_category_values)[selectedCatIndex]).apply();
+                initializeData();
+            }
+        });
+
+        alertDialog.setNegativeButton(context.getString(R.string.dialog_negative), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+
+        alertDialog.show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        initializeData();
+    }
 }
