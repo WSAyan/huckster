@@ -18,4 +18,7 @@ public interface IApiInteractor {
 
     @GET("v2/top-headlines")
     Call<TopNews> getTopNews(@Header("X-Api-Key") String apiKey, @Query("language") String language, @Query("country") String country, @Query("category") String category);
+
+    @GET("v2/everything")
+    Call<TopNews> getNewsSearchResult(@Header("X-Api-Key") String apiKey, @Query("q") String query);
 }

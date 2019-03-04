@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 /**
@@ -26,8 +27,8 @@ public class CommonOperations {
 
     public static String formattedDateAndTime(String dateString) {
         String formattedTime = "";
-        SimpleDateFormat sdf = new SimpleDateFormat(GlobalConstants.DATE_FORMAT_PATTERN_ORIGINAL);
-        SimpleDateFormat output = new SimpleDateFormat(GlobalConstants.DATE_FORMAT_PATTERN_DISPLAY);
+        SimpleDateFormat sdf = new SimpleDateFormat(GlobalConstants.DATE_FORMAT_PATTERN_ORIGINAL, Locale.US);
+        SimpleDateFormat output = new SimpleDateFormat(GlobalConstants.DATE_FORMAT_PATTERN_DISPLAY, Locale.US);
         try {
             Date d = sdf.parse(dateString);
             formattedTime = output.format(d);

@@ -22,12 +22,23 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.wsayan.huckster.core.R;
+import com.wsayan.huckster.core.model.pojo.Article;
+import com.wsayan.huckster.core.model.pojo.TopNews;
 import com.wsayan.huckster.core.presenter.AppPresenter;
+import com.wsayan.huckster.core.presenter.IApiInteractor;
 import com.wsayan.huckster.core.ui.adapter.HomeTabAdapter;
 import com.wsayan.huckster.core.ui.adapter.SelectListAdapter;
+import com.wsayan.huckster.core.ui.adapter.TopNewsListAdapter;
+import com.wsayan.huckster.core.ui.fragment.TopNewsFragment;
 import com.wsayan.huckster.core.utility.CommonOperations;
 import com.wsayan.huckster.core.utility.GlobalConstants;
 import com.wsayan.huckster.core.utility.SharedPrefUtils;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeTabActivity extends AppCompatActivity {
     private HomeTabAdapter mSectionsPagerAdapter;
@@ -39,6 +50,9 @@ public class HomeTabActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     //private BottomNavigationView bottomNavigationView;
     private int selectedCatIndex, selectedCountryIndex;
+    private Call<TopNews> searchNews;
+    private IApiInteractor apiInteractor;
+    private List<Article> articles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +75,8 @@ public class HomeTabActivity extends AppCompatActivity {
         context = this;
         setSupportActionBar(toolbar);
         sharedPreferences = new AppPresenter().getSharedPrefInterface(context);
+        apiInteractor = new AppPresenter().getApiInterface();
+
         selectedCatIndex = CommonOperations.getSharedPrefListPosition(getResources().getStringArray(R.array.pref_category_values), sharedPreferences.getString(SharedPrefUtils._CATEGORY, ""));
         selectedCountryIndex = CommonOperations.getSharedPrefListPosition(getResources().getStringArray(R.array.pref_country_values), sharedPreferences.getString(SharedPrefUtils._COUNTRY, ""));
 
@@ -104,24 +120,6 @@ public class HomeTabActivity extends AppCompatActivity {
         });*/
     }
 
-    private void showListDialog(String[] selectArray) {
-        Dialog dialog = new Dialog(context);
-        dialog.setContentView(R.layout.dialog_select);
-        dialog.setTitle("SELECT");
-
-
-        SelectListAdapter selectListAdapter = new SelectListAdapter(context, selectArray);
-        RecyclerView selectRecyclerView = dialog.findViewById(R.id.selectRecyclerView);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-        selectRecyclerView.setLayoutManager(layoutManager);
-        selectRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        selectRecyclerView.setAdapter(selectListAdapter);
-        selectListAdapter.notifyDataSetChanged();
-
-        dialog.show();
-
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home_tabbed, menu);
@@ -131,6 +129,19 @@ public class HomeTabActivity extends AppCompatActivity {
                 (SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setSearchableInfo(
                 searchManager != null ? searchManager.getSearchableInfo(getComponentName()) : null);
+        SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
+            public boolean onQueryTextChange(String queryText) {
+                return true;
+            }
+
+            public boolean onQueryTextSubmit(String query) {
+                if (!query.isEmpty()) {
+                    //loadSearchResult(query);
+                }
+                return true;
+            }
+        };
+        searchView.setOnQueryTextListener(queryTextListener);
 
         return true;
     }
@@ -187,5 +198,25 @@ public class HomeTabActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         initializeData();
+    }
+
+    private void loadSearchResult(String query) {
+        searchNews = apiInteractor.getNewsSearchResult(sharedPreferences.getString(SharedPrefUtils._API_KEY, null), query);
+        searchNews.enqueue(new Callback<TopNews>() {
+            @Override
+            public void onResponse(Call<TopNews> call, Response<TopNews> response) {
+                if (response.code() == 200) {
+                    articles = response.body().getArticles();
+                    if (articles != null) {
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TopNews> call, Throwable t) {
+
+            }
+        });
     }
 }

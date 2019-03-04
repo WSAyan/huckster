@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,8 +92,9 @@ public class TopNewsFragment extends Fragment {
         });
     }
 
-    private void createList(List<Article> articles) {
-        TopNewsListAdapter topNewsListAdapter = new TopNewsListAdapter(context, articles);
+    public void createList(List<Article> articles) {
+        TopNewsListAdapter topNewsListAdapter = new TopNewsListAdapter(context);
+        topNewsListAdapter.setArticles(articles);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         topNewsRecyclerView.setLayoutManager(layoutManager);
         topNewsRecyclerView.setItemAnimator(new DefaultItemAnimator());

@@ -25,9 +25,12 @@ public class TopNewsListAdapter extends RecyclerView.Adapter<TopNewsListAdapter.
     private Context context;
     private List<Article> articles;
 
-    public TopNewsListAdapter(Context context, List<Article> articles) {
+    public TopNewsListAdapter(Context context) {
         this.context = context;
-        this.articles = articles;
+    }
+
+    public TopNewsListAdapter() {
+
     }
 
     @Override
@@ -80,6 +83,14 @@ public class TopNewsListAdapter extends RecyclerView.Adapter<TopNewsListAdapter.
                 progressBar.setVisibility(View.GONE);
             }
         });
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 
     @Override
